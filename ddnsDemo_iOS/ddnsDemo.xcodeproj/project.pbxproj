@@ -1,0 +1,570 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BEE07EDA191733D8007764D4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEE07ED9191733D8007764D4 /* Foundation.framework */; };
+		BEE07EDC191733D8007764D4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEE07EDB191733D8007764D4 /* CoreGraphics.framework */; };
+		BEE07EDE191733D8007764D4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEE07EDD191733D8007764D4 /* UIKit.framework */; };
+		BEE07EE4191733D8007764D4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEE07EE2191733D8007764D4 /* InfoPlist.strings */; };
+		BEE07EE6191733D8007764D4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE07EE5191733D8007764D4 /* main.m */; };
+		BEE07EEA191733D8007764D4 /* MDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE07EE9191733D8007764D4 /* MDAppDelegate.m */; };
+		BEE07EED191733D8007764D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEE07EEB191733D8007764D4 /* Main.storyboard */; };
+		BEE07EF0191733D8007764D4 /* MDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE07EEF191733D8007764D4 /* MDViewController.m */; };
+		BEE07EF2191733D8007764D4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEE07EF1191733D8007764D4 /* Images.xcassets */; };
+		BEE07EF9191733D9007764D4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEE07EF8191733D9007764D4 /* XCTest.framework */; };
+		BEE07EFA191733D9007764D4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEE07ED9191733D8007764D4 /* Foundation.framework */; };
+		BEE07EFB191733D9007764D4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEE07EDD191733D8007764D4 /* UIKit.framework */; };
+		BEE07F03191733D9007764D4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEE07F01191733D9007764D4 /* InfoPlist.strings */; };
+		BEE07F05191733D9007764D4 /* ddnsDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE07F04191733D9007764D4 /* ddnsDemoTests.m */; };
+		BEE07F2419173431007764D4 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE07F1119173431007764D4 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BEE07F2519173431007764D4 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE07F1419173431007764D4 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BEE07F2619173431007764D4 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE07F1619173431007764D4 /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BEE07F2719173431007764D4 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE07F1819173431007764D4 /* ASIDownloadCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BEE07F2819173431007764D4 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE07F1A19173431007764D4 /* ASIFormDataRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BEE07F2919173431007764D4 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE07F1C19173431007764D4 /* ASIHTTPRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BEE07F2A19173431007764D4 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE07F2019173431007764D4 /* ASIInputStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BEE07F2B19173431007764D4 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE07F2219173431007764D4 /* ASINetworkQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BEE07F2E19173443007764D4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE07F2D19173443007764D4 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BEE07F30191734BB007764D4 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEE07F2F191734BB007764D4 /* CFNetwork.framework */; };
+		BEE07F32191734F5007764D4 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEE07F31191734F5007764D4 /* MobileCoreServices.framework */; };
+		BEE07F34191734FC007764D4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEE07F33191734FC007764D4 /* SystemConfiguration.framework */; };
+		BEE07F3619173508007764D4 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEE07F3519173508007764D4 /* Security.framework */; };
+		BEE07F3819173519007764D4 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BEE07F3719173519007764D4 /* libz.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BEE07EFC191733D9007764D4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BEE07ECE191733D8007764D4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BEE07ED5191733D8007764D4;
+			remoteInfo = ddnsDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BEE07ED6191733D8007764D4 /* ddnsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ddnsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BEE07ED9191733D8007764D4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BEE07EDB191733D8007764D4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		BEE07EDD191733D8007764D4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		BEE07EE1191733D8007764D4 /* ddnsDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ddnsDemo-Info.plist"; sourceTree = "<group>"; };
+		BEE07EE3191733D8007764D4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BEE07EE5191733D8007764D4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BEE07EE7191733D8007764D4 /* ddnsDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ddnsDemo-Prefix.pch"; sourceTree = "<group>"; };
+		BEE07EE8191733D8007764D4 /* MDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MDAppDelegate.h; sourceTree = "<group>"; };
+		BEE07EE9191733D8007764D4 /* MDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MDAppDelegate.m; sourceTree = "<group>"; };
+		BEE07EEC191733D8007764D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BEE07EEE191733D8007764D4 /* MDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MDViewController.h; sourceTree = "<group>"; };
+		BEE07EEF191733D8007764D4 /* MDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MDViewController.m; sourceTree = "<group>"; };
+		BEE07EF1191733D8007764D4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BEE07EF7191733D9007764D4 /* ddnsDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ddnsDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BEE07EF8191733D9007764D4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		BEE07F00191733D9007764D4 /* ddnsDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ddnsDemoTests-Info.plist"; sourceTree = "<group>"; };
+		BEE07F02191733D9007764D4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BEE07F04191733D9007764D4 /* ddnsDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ddnsDemoTests.m; sourceTree = "<group>"; };
+		BEE07F1019173431007764D4 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
+		BEE07F1119173431007764D4 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
+		BEE07F1219173431007764D4 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
+		BEE07F1319173431007764D4 /* ASIDataCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataCompressor.h; sourceTree = "<group>"; };
+		BEE07F1419173431007764D4 /* ASIDataCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataCompressor.m; sourceTree = "<group>"; };
+		BEE07F1519173431007764D4 /* ASIDataDecompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataDecompressor.h; sourceTree = "<group>"; };
+		BEE07F1619173431007764D4 /* ASIDataDecompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataDecompressor.m; sourceTree = "<group>"; };
+		BEE07F1719173431007764D4 /* ASIDownloadCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDownloadCache.h; sourceTree = "<group>"; };
+		BEE07F1819173431007764D4 /* ASIDownloadCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDownloadCache.m; sourceTree = "<group>"; };
+		BEE07F1919173431007764D4 /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIFormDataRequest.h; sourceTree = "<group>"; };
+		BEE07F1A19173431007764D4 /* ASIFormDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIFormDataRequest.m; sourceTree = "<group>"; };
+		BEE07F1B19173431007764D4 /* ASIHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequest.h; sourceTree = "<group>"; };
+		BEE07F1C19173431007764D4 /* ASIHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIHTTPRequest.m; sourceTree = "<group>"; };
+		BEE07F1D19173431007764D4 /* ASIHTTPRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestConfig.h; sourceTree = "<group>"; };
+		BEE07F1E19173431007764D4 /* ASIHTTPRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestDelegate.h; sourceTree = "<group>"; };
+		BEE07F1F19173431007764D4 /* ASIInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIInputStream.h; sourceTree = "<group>"; };
+		BEE07F2019173431007764D4 /* ASIInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIInputStream.m; sourceTree = "<group>"; };
+		BEE07F2119173431007764D4 /* ASINetworkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASINetworkQueue.h; sourceTree = "<group>"; };
+		BEE07F2219173431007764D4 /* ASINetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASINetworkQueue.m; sourceTree = "<group>"; };
+		BEE07F2319173431007764D4 /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
+		BEE07F2C19173443007764D4 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		BEE07F2D19173443007764D4 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		BEE07F2F191734BB007764D4 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		BEE07F31191734F5007764D4 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		BEE07F33191734FC007764D4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		BEE07F3519173508007764D4 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		BEE07F3719173519007764D4 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BEE07ED3191733D8007764D4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEE07F3819173519007764D4 /* libz.dylib in Frameworks */,
+				BEE07F3619173508007764D4 /* Security.framework in Frameworks */,
+				BEE07F34191734FC007764D4 /* SystemConfiguration.framework in Frameworks */,
+				BEE07F32191734F5007764D4 /* MobileCoreServices.framework in Frameworks */,
+				BEE07F30191734BB007764D4 /* CFNetwork.framework in Frameworks */,
+				BEE07EDC191733D8007764D4 /* CoreGraphics.framework in Frameworks */,
+				BEE07EDE191733D8007764D4 /* UIKit.framework in Frameworks */,
+				BEE07EDA191733D8007764D4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BEE07EF4191733D9007764D4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEE07EF9191733D9007764D4 /* XCTest.framework in Frameworks */,
+				BEE07EFB191733D9007764D4 /* UIKit.framework in Frameworks */,
+				BEE07EFA191733D9007764D4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BEE07ECD191733D8007764D4 = {
+			isa = PBXGroup;
+			children = (
+				BEE07F0E191733F1007764D4 /* libs */,
+				BEE07EDF191733D8007764D4 /* ddnsDemo */,
+				BEE07EFE191733D9007764D4 /* ddnsDemoTests */,
+				BEE07ED8191733D8007764D4 /* Frameworks */,
+				BEE07ED7191733D8007764D4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BEE07ED7191733D8007764D4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BEE07ED6191733D8007764D4 /* ddnsDemo.app */,
+				BEE07EF7191733D9007764D4 /* ddnsDemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BEE07ED8191733D8007764D4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BEE07F3719173519007764D4 /* libz.dylib */,
+				BEE07F3519173508007764D4 /* Security.framework */,
+				BEE07F33191734FC007764D4 /* SystemConfiguration.framework */,
+				BEE07F31191734F5007764D4 /* MobileCoreServices.framework */,
+				BEE07F2F191734BB007764D4 /* CFNetwork.framework */,
+				BEE07ED9191733D8007764D4 /* Foundation.framework */,
+				BEE07EDB191733D8007764D4 /* CoreGraphics.framework */,
+				BEE07EDD191733D8007764D4 /* UIKit.framework */,
+				BEE07EF8191733D9007764D4 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BEE07EDF191733D8007764D4 /* ddnsDemo */ = {
+			isa = PBXGroup;
+			children = (
+				BEE07EE8191733D8007764D4 /* MDAppDelegate.h */,
+				BEE07EE9191733D8007764D4 /* MDAppDelegate.m */,
+				BEE07EEB191733D8007764D4 /* Main.storyboard */,
+				BEE07EEE191733D8007764D4 /* MDViewController.h */,
+				BEE07EEF191733D8007764D4 /* MDViewController.m */,
+				BEE07EF1191733D8007764D4 /* Images.xcassets */,
+				BEE07EE0191733D8007764D4 /* Supporting Files */,
+			);
+			path = ddnsDemo;
+			sourceTree = "<group>";
+		};
+		BEE07EE0191733D8007764D4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BEE07EE1191733D8007764D4 /* ddnsDemo-Info.plist */,
+				BEE07EE2191733D8007764D4 /* InfoPlist.strings */,
+				BEE07EE5191733D8007764D4 /* main.m */,
+				BEE07EE7191733D8007764D4 /* ddnsDemo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BEE07EFE191733D9007764D4 /* ddnsDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				BEE07F04191733D9007764D4 /* ddnsDemoTests.m */,
+				BEE07EFF191733D9007764D4 /* Supporting Files */,
+			);
+			path = ddnsDemoTests;
+			sourceTree = "<group>";
+		};
+		BEE07EFF191733D9007764D4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BEE07F00191733D9007764D4 /* ddnsDemoTests-Info.plist */,
+				BEE07F01191733D9007764D4 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BEE07F0E191733F1007764D4 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				BEE07F0F191733FB007764D4 /* ASIHTTP */,
+			);
+			name = libs;
+			sourceTree = "<group>";
+		};
+		BEE07F0F191733FB007764D4 /* ASIHTTP */ = {
+			isa = PBXGroup;
+			children = (
+				BEE07F2C19173443007764D4 /* Reachability.h */,
+				BEE07F2D19173443007764D4 /* Reachability.m */,
+				BEE07F1019173431007764D4 /* ASIAuthenticationDialog.h */,
+				BEE07F1119173431007764D4 /* ASIAuthenticationDialog.m */,
+				BEE07F1219173431007764D4 /* ASICacheDelegate.h */,
+				BEE07F1319173431007764D4 /* ASIDataCompressor.h */,
+				BEE07F1419173431007764D4 /* ASIDataCompressor.m */,
+				BEE07F1519173431007764D4 /* ASIDataDecompressor.h */,
+				BEE07F1619173431007764D4 /* ASIDataDecompressor.m */,
+				BEE07F1719173431007764D4 /* ASIDownloadCache.h */,
+				BEE07F1819173431007764D4 /* ASIDownloadCache.m */,
+				BEE07F1919173431007764D4 /* ASIFormDataRequest.h */,
+				BEE07F1A19173431007764D4 /* ASIFormDataRequest.m */,
+				BEE07F1B19173431007764D4 /* ASIHTTPRequest.h */,
+				BEE07F1C19173431007764D4 /* ASIHTTPRequest.m */,
+				BEE07F1D19173431007764D4 /* ASIHTTPRequestConfig.h */,
+				BEE07F1E19173431007764D4 /* ASIHTTPRequestDelegate.h */,
+				BEE07F1F19173431007764D4 /* ASIInputStream.h */,
+				BEE07F2019173431007764D4 /* ASIInputStream.m */,
+				BEE07F2119173431007764D4 /* ASINetworkQueue.h */,
+				BEE07F2219173431007764D4 /* ASINetworkQueue.m */,
+				BEE07F2319173431007764D4 /* ASIProgressDelegate.h */,
+			);
+			name = ASIHTTP;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BEE07ED5191733D8007764D4 /* ddnsDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BEE07F08191733D9007764D4 /* Build configuration list for PBXNativeTarget "ddnsDemo" */;
+			buildPhases = (
+				BEE07ED2191733D8007764D4 /* Sources */,
+				BEE07ED3191733D8007764D4 /* Frameworks */,
+				BEE07ED4191733D8007764D4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ddnsDemo;
+			productName = ddnsDemo;
+			productReference = BEE07ED6191733D8007764D4 /* ddnsDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BEE07EF6191733D9007764D4 /* ddnsDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BEE07F0B191733D9007764D4 /* Build configuration list for PBXNativeTarget "ddnsDemoTests" */;
+			buildPhases = (
+				BEE07EF3191733D9007764D4 /* Sources */,
+				BEE07EF4191733D9007764D4 /* Frameworks */,
+				BEE07EF5191733D9007764D4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BEE07EFD191733D9007764D4 /* PBXTargetDependency */,
+			);
+			name = ddnsDemoTests;
+			productName = ddnsDemoTests;
+			productReference = BEE07EF7191733D9007764D4 /* ddnsDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BEE07ECE191733D8007764D4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = MD;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Will Zhang";
+				TargetAttributes = {
+					BEE07EF6191733D9007764D4 = {
+						TestTargetID = BEE07ED5191733D8007764D4;
+					};
+				};
+			};
+			buildConfigurationList = BEE07ED1191733D8007764D4 /* Build configuration list for PBXProject "ddnsDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BEE07ECD191733D8007764D4;
+			productRefGroup = BEE07ED7191733D8007764D4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BEE07ED5191733D8007764D4 /* ddnsDemo */,
+				BEE07EF6191733D9007764D4 /* ddnsDemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BEE07ED4191733D8007764D4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEE07EF2191733D8007764D4 /* Images.xcassets in Resources */,
+				BEE07EE4191733D8007764D4 /* InfoPlist.strings in Resources */,
+				BEE07EED191733D8007764D4 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BEE07EF5191733D9007764D4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEE07F03191733D9007764D4 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BEE07ED2191733D8007764D4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEE07F2519173431007764D4 /* ASIDataCompressor.m in Sources */,
+				BEE07EE6191733D8007764D4 /* main.m in Sources */,
+				BEE07F2919173431007764D4 /* ASIHTTPRequest.m in Sources */,
+				BEE07F2419173431007764D4 /* ASIAuthenticationDialog.m in Sources */,
+				BEE07F2819173431007764D4 /* ASIFormDataRequest.m in Sources */,
+				BEE07EF0191733D8007764D4 /* MDViewController.m in Sources */,
+				BEE07F2A19173431007764D4 /* ASIInputStream.m in Sources */,
+				BEE07EEA191733D8007764D4 /* MDAppDelegate.m in Sources */,
+				BEE07F2B19173431007764D4 /* ASINetworkQueue.m in Sources */,
+				BEE07F2619173431007764D4 /* ASIDataDecompressor.m in Sources */,
+				BEE07F2E19173443007764D4 /* Reachability.m in Sources */,
+				BEE07F2719173431007764D4 /* ASIDownloadCache.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BEE07EF3191733D9007764D4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEE07F05191733D9007764D4 /* ddnsDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BEE07EFD191733D9007764D4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BEE07ED5191733D8007764D4 /* ddnsDemo */;
+			targetProxy = BEE07EFC191733D9007764D4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BEE07EE2191733D8007764D4 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEE07EE3191733D8007764D4 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BEE07EEB191733D8007764D4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEE07EEC191733D8007764D4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BEE07F01191733D9007764D4 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEE07F02191733D9007764D4 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BEE07F06191733D9007764D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		BEE07F07191733D9007764D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BEE07F09191733D9007764D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ddnsDemo/ddnsDemo-Prefix.pch";
+				INFOPLIST_FILE = "ddnsDemo/ddnsDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		BEE07F0A191733D9007764D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ddnsDemo/ddnsDemo-Prefix.pch";
+				INFOPLIST_FILE = "ddnsDemo/ddnsDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		BEE07F0C191733D9007764D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ddnsDemo.app/ddnsDemo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ddnsDemo/ddnsDemo-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "ddnsDemoTests/ddnsDemoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		BEE07F0D191733D9007764D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ddnsDemo.app/ddnsDemo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ddnsDemo/ddnsDemo-Prefix.pch";
+				INFOPLIST_FILE = "ddnsDemoTests/ddnsDemoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BEE07ED1191733D8007764D4 /* Build configuration list for PBXProject "ddnsDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BEE07F06191733D9007764D4 /* Debug */,
+				BEE07F07191733D9007764D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BEE07F08191733D9007764D4 /* Build configuration list for PBXNativeTarget "ddnsDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BEE07F09191733D9007764D4 /* Debug */,
+				BEE07F0A191733D9007764D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		BEE07F0B191733D9007764D4 /* Build configuration list for PBXNativeTarget "ddnsDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BEE07F0C191733D9007764D4 /* Debug */,
+				BEE07F0D191733D9007764D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BEE07ECE191733D8007764D4 /* Project object */;
+}
