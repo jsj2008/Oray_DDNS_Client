@@ -555,6 +555,7 @@
 				BEE07F0A191733D9007764D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BEE07F0B191733D9007764D4 /* Build configuration list for PBXNativeTarget "ddnsDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -563,6 +564,7 @@
 				BEE07F0D191733D9007764D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
