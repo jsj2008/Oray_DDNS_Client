@@ -19,6 +19,7 @@
 		BE0D2A7319188F4F00ACAC0A /* MKNetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0D2A6519188F4F00ACAC0A /* MKNetworkEngine.m */; };
 		BE0D2A7419188F4F00ACAC0A /* MKNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0D2A6819188F4F00ACAC0A /* MKNetworkOperation.m */; };
 		BE0D2A7519188F4F00ACAC0A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0D2A6B19188F4F00ACAC0A /* Reachability.m */; };
+		BE0D2A78191896F600ACAC0A /* OrayDDNSEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0D2A77191896F600ACAC0A /* OrayDDNSEngine.m */; };
 		BEE0801A1917A1B6007764D4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEE080191917A1B6007764D4 /* Cocoa.framework */; };
 		BEE080241917A1B6007764D4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEE080221917A1B6007764D4 /* InfoPlist.strings */; };
 		BEE080261917A1B6007764D4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE080251917A1B6007764D4 /* main.m */; };
@@ -64,6 +65,8 @@
 		BE0D2A6819188F4F00ACAC0A /* MKNetworkOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKNetworkOperation.m; sourceTree = "<group>"; };
 		BE0D2A6A19188F4F00ACAC0A /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		BE0D2A6B19188F4F00ACAC0A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		BE0D2A76191896F600ACAC0A /* OrayDDNSEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrayDDNSEngine.h; sourceTree = "<group>"; };
+		BE0D2A77191896F600ACAC0A /* OrayDDNSEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrayDDNSEngine.m; sourceTree = "<group>"; };
 		BEE080161917A1B6007764D4 /* ddnsDemo_OSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ddnsDemo_OSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEE080191917A1B6007764D4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		BEE0801C1917A1B6007764D4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -211,6 +214,8 @@
 				BEE0802E1917A1B6007764D4 /* MainMenu.xib */,
 				BEE080311917A1B6007764D4 /* Images.xcassets */,
 				BEE080201917A1B6007764D4 /* Supporting Files */,
+				BE0D2A76191896F600ACAC0A /* OrayDDNSEngine.h */,
+				BE0D2A77191896F600ACAC0A /* OrayDDNSEngine.m */,
 			);
 			path = ddnsDemo_OSX;
 			sourceTree = "<group>";
@@ -345,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE0D2A6C19188F4F00ACAC0A /* NSAlert+MKNetworkKitAdditions.m in Sources */,
+				BE0D2A78191896F600ACAC0A /* OrayDDNSEngine.m in Sources */,
 				BE0D2A6F19188F4F00ACAC0A /* NSDictionary+RequestEncoding.m in Sources */,
 				BE0D2A7019188F4F00ACAC0A /* NSString+MKNetworkKitAdditions.m in Sources */,
 				BEE080261917A1B6007764D4 /* main.m in Sources */,
