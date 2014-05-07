@@ -19,7 +19,7 @@
     return self;
 }
 
--(MKNetworkOperation *)checkCurrentIPOnCompletion:(CurrentIPBlock)completionBlock onError:(ErrorBlock)errorBlock{
+-(MKNetworkOperation *)checkLocalIPOnCompletion:(LocalIPBlock)completionBlock onError:(ErrorBlock)errorBlock{
     MKNetworkOperation *operation = [self operationWithPath:@"checkip"];
     [operation addCompletionHandler:^(MKNetworkOperation *completedOperation)
      {

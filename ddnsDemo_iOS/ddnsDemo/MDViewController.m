@@ -21,9 +21,65 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UISwitch *autoSwitch;
 @property (strong,nonatomic) NSTimer *autoCheckTimer;
+@property (weak, nonatomic) IBOutlet UIButton *checkHostBtn;
 @end
 
 @implementation MDViewController
+- (IBAction)onCheckHostBtn:(id)sender {
+    NSString *urlStr = [NSString stringWithFormat:@"http://ip.chinaz.com/?IP=%@",_domainTextField.text];
+    NSURL *url = [NSURL URLWithString:urlStr];
+    __block ASIHTTPRequest *request = [[ASIHTTPRequest alloc]initWithURL:url];
+    [request setTimeOutSeconds:30];
+    [request setCompletionBlock:^{
+        if (request.responseStatusCode == 200) {
+            NSString *str = request.responseString;
+            NSRange headRange = [str rangeOfString:@"查询结果"];
+            NSRange tailRange = [str rangeOfString:@"==>>"];
+            
+            NSRange IPRange = NSMakeRange(headRange.location+headRange.length+5, tailRange.location-headRange.location-10);
+            NSString *hostIP = [str substringWithRange:IPRange];
+            NSArray *checkArr = [hostIP componentsSeparatedByString:@"."];
+            if ([checkArr count] == 4) {
+                BOOL validIP = YES;
+                for (NSString *part in checkArr) {
+                    if ([part integerValue] > 255) {
+                        validIP = NO;
+                    }
+                }
+                if (validIP) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [_checkHostBtn setTitle:hostIP forState:UIControlStateNormal];
+                        [_activityIndicator stopAnimating];
+                    });
+                }else{
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [_checkHostBtn setTitle:@"获取域名对应IP失败" forState:UIControlStateNormal];
+                        [_activityIndicator stopAnimating];
+                    });
+                }
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [_checkHostBtn setTitle:@"获取域名对应IP失败" forState:UIControlStateNormal];
+                    [_activityIndicator stopAnimating];
+                });
+            }
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [_checkHostBtn setTitle:@"获取域名对应IP失败" forState:UIControlStateNormal];
+                [_activityIndicator stopAnimating];
+            });
+        }
+    }];
+    [request setFailedBlock:^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            _ipLabel.text = @"Check Host Request Failed.";
+            [_activityIndicator stopAnimating];
+        });
+    }];
+    [request startAsynchronous];
+    [_activityIndicator startAnimating];
+
+}
 - (IBAction)handleAutoSwitch:(UISwitch *)sender {
     if (sender.isOn) {
         _autoCheckTimer = [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(autoCheck) userInfo:nil repeats:YES];

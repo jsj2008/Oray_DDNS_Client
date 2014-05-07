@@ -7,14 +7,15 @@
 //
 
 #import "MKNetworkEngine.h"
-typedef void (^CurrentIPBlock)(NSString *currentIP);
+
+typedef void (^LocalIPBlock)(NSString *LocalIP);
 typedef void (^UpdateResoponseBlock)(NSDictionary *responseInfo);
 typedef void (^ErrorBlock)(NSError* error);
 
 @interface OrayDDNSEngine : MKNetworkEngine
 
 -(instancetype)initWithDefaultSettings;
--(MKNetworkOperation *)checkCurrentIPOnCompletion:(CurrentIPBlock)completionBlock onError:(ErrorBlock)errorBlock;
+-(MKNetworkOperation *)checkLocalIPOnCompletion:(LocalIPBlock)completionBlock onError:(ErrorBlock)errorBlock;
 -(MKNetworkOperation *)updateDNSWithHosts:(NSArray *)hosts IPAdress:(NSString *)IP authorInfo:(NSDictionary *)info onCompletion:(UpdateResoponseBlock)completionBlock onError:(ErrorBlock)errorBlock;
 
 @end

@@ -100,12 +100,23 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wT6-Y6-Abx">
+                                <rect key="frame" x="20" y="518" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Check Host IP">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onCheckHostBtn:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="4uF-69-k6j"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="dqG-6R-dN7" id="0A7-Ap-WF0"/>
                         <outlet property="autoSwitch" destination="AVn-B5-Koj" id="AJL-Ri-wi8"/>
+                        <outlet property="checkHostBtn" destination="wT6-Y6-Abx" id="bJ6-2R-bBT"/>
                         <outlet property="domainTextField" destination="c9Z-8X-pRJ" id="2Dj-Rd-ZU4"/>
                         <outlet property="ipLabel" destination="nTu-n0-ffA" id="lqv-7D-V44"/>
                         <outlet property="passwordTextField" destination="wyM-ao-GIf" id="Y9W-TD-yYU"/>
