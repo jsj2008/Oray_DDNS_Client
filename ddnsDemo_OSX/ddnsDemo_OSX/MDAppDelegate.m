@@ -41,9 +41,6 @@
 @end
 
 @implementation MDAppDelegate
-- (IBAction)onPingBtn:(id)sender {
-    [self pingHost];
-}
 
 -(void)autoCheck{
     [self checkLocal];
@@ -114,38 +111,12 @@
     
     [_activityIndicator startAnimation:nil];
 }
--(void)pingHost{
-    NSString *hostname = _domainTFC.title;
-    _ping = [SimplePing simplePingWithHostName:hostname];
-    _ping.delegate = self;
-    [_ping start];
-}
--(void)simplePing:(SimplePing *)pinger didStartWithAddress:(NSData *)address{
-
-    [_ping stop];
-}
--(void)simplePing:(SimplePing *)pinger didFailWithError:(NSError *)error{
-    
-    [_ping stop];
-}
--(void)simplePing:(SimplePing *)pinger didSendPacket:(NSData *)packet{
-    
-}
--(void)simplePing:(SimplePing *)pinger didReceivePingResponsePacket:(NSData *)packet{
-    
-}
--(void)simplePing:(SimplePing *)pinger didReceiveUnexpectedPacket:(NSData *)packet{
-    
-}
--(void)simplePing:(SimplePing *)pinger didFailToSendPacket:(NSData *)packet error:(NSError *)error{
-    
-}
 -(IBAction)onAutoCheckBox:(NSButton *)sender {
     NSButton *btn = (NSButton *)sender;
 //    NSLog(@"%@:%li",@"checkbox pressed",btn.state);
     if (btn.state == 1) {
         _shouldAutoCheck = YES;
-        _autoCheckTimer = [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(autoCheck) userInfo:nil repeats:YES];
+        _autoCheckTimer = [NSTimer scheduledTimerWithTimeInterval:600 target:self selector:@selector(autoCheck) userInfo:nil repeats:YES];
         _updateBtn.enabled = NO;
     }else if (btn.state == 0){
         _shouldAutoCheck = NO;
@@ -195,6 +166,44 @@
     [self.chinazEngine useCache];
     
     _shouldAutoCheck = NO;
+}
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+- (IBAction)onPingBtn:(id)sender {
+    [self pingHost];
+}
+
+-(void)pingHost{
+    NSString *hostname = _domainTFC.title;
+    _ping = [SimplePing simplePingWithHostName:hostname];
+    _ping.delegate = self;
+    [_ping start];
+}
+-(void)simplePing:(SimplePing *)pinger didStartWithAddress:(NSData *)address{
+    
+    [_ping stop];
+}
+-(void)simplePing:(SimplePing *)pinger didFailWithError:(NSError *)error{
+    
+    [_ping stop];
+}
+-(void)simplePing:(SimplePing *)pinger didSendPacket:(NSData *)packet{
+    
+}
+-(void)simplePing:(SimplePing *)pinger didReceivePingResponsePacket:(NSData *)packet{
+    
+}
+-(void)simplePing:(SimplePing *)pinger didReceiveUnexpectedPacket:(NSData *)packet{
+    
+}
+-(void)simplePing:(SimplePing *)pinger didFailToSendPacket:(NSData *)packet error:(NSError *)error{
+    
 }
 
 @end
