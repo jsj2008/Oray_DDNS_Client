@@ -8,7 +8,7 @@
 
 #import "MDAppDelegate.h"
 #import "OrayDDNSEngine.h"
-#import "IPChinaZEngine.h"
+//#import "IPChinaZEngine.h"
 #import "SimplePing.h"
 
 @interface MDAppDelegate ()<SimplePingDelegate>
@@ -33,8 +33,9 @@
 @property (strong,nonatomic) MKNetworkOperation *checkLocalIP;
 @property (strong,nonatomic) MKNetworkOperation *updateDNS;
 
-@property (strong,nonatomic) IPChinaZEngine *chinazEngine;
-@property (strong,nonatomic) MKNetworkOperation *checkHostIP;
+//@property (strong,nonatomic) IPChinaZEngine *chinazEngine;
+//@property (strong,nonatomic) MKNetworkOperation *checkHostIP;
+
 @property (strong,nonatomic) SimplePing *ping;
 
 @property (assign,nonatomic) BOOL shouldAutoCheck;
@@ -42,23 +43,32 @@
 
 @implementation MDAppDelegate
 
--(void)autoCheck{
-    [self checkLocal];
-    [self checkHost];
-}
--(void)compareIPLocalToDomain{
-    NSLog(@"LOCAL IP:%@ | HOST IP:%@",_localIP,_hostIP);
-    if (![_localIP isEqualToString:_hostIP]) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (_shouldAutoCheck) {
-                [self onUpdateBtn:_autoCheckTimer];
-                NSLog(@"AUTO UPDATE!");
-            }
-        });
+#pragma mark - Actions
+-(IBAction)onAutoCheckBox:(NSButton *)sender {
+    NSButton *btn = (NSButton *)sender;
+//    NSLog(@"%@:%li",@"checkbox pressed",btn.state);
+    if (btn.state == 1) {
+        _shouldAutoCheck = YES;
+        _autoCheckTimer = [NSTimer scheduledTimerWithTimeInterval:600 target:self selector:@selector(autoCheck) userInfo:nil repeats:YES];
+        _updateBtn.enabled = NO;
+    }else if (btn.state == 0){
+        _shouldAutoCheck = NO;
+        [_autoCheckTimer invalidate];
+        _updateBtn.enabled = YES;
     }
 }
+
+-(IBAction)onCheckBtn:(NSButton *)sender {
+    [self checkLocal];
+}
+
+-(IBAction)onUpdateBtn:(id)sender {
+    NSString *domain = _domainTFC.title;
+    [self updateOrayWithIp:_localIP andHostnames:@[domain]];
+}
+
+#pragma mark - Network Activities
 -(void)checkLocal{
-    
     _checkLocalIP = [_orayEngine checkLocalIPOnCompletion:^(NSString *currentLocalIP) {
         if (![_localIP isEqualToString:currentLocalIP]) {
             NSLog(@"Local IP changed to %@",currentLocalIP);
@@ -84,52 +94,55 @@
     
     [_activityIndicator startAnimation:nil];
 }
--(void)checkHost{
+-(void)checkHostBySimplePing{
     NSString *hostname = _domainTFC.title;
-    _checkHostIP = [_chinazEngine checkHostIPWithHostname:hostname onCompletion:^(NSDictionary *responseInfo) {
-        NSString *message = [responseInfo objectForKey:@"message"];
-        NSString *hostIP = [responseInfo objectForKey:@"hostIP"];
-        if ([hostIP length] > 0) {
-            if (![_hostIP isEqualToString:hostIP]) {
-                NSLog(@"Host : %@ IP changed to %@",hostname,hostIP);
-                _hostIP = hostIP;
-                [self compareIPLocalToDomain];
-            }else{
-                NSLog(@"Host IP did not change.");
-            }
-        }else{
-            _hostIP = hostIP;
-            [self compareIPLocalToDomain];
-        }
-        NSLog(@"%@",message);
-        
-        [_activityIndicator stopAnimation:nil];
-    } onError:^(NSError *error) {
-        NSLog(@"Check IP For HOST : %@ Request Failed With Error : %@",hostname,error);
-        [_activityIndicator stopAnimation:nil];
-    }];
-    
+    SimplePing *checkHostPing = [SimplePing simplePingWithHostName:hostname];
+    [checkHostPing setDelegate:self];
+    [checkHostPing start];
     [_activityIndicator startAnimation:nil];
 }
--(IBAction)onAutoCheckBox:(NSButton *)sender {
-    NSButton *btn = (NSButton *)sender;
-//    NSLog(@"%@:%li",@"checkbox pressed",btn.state);
-    if (btn.state == 1) {
-        _shouldAutoCheck = YES;
-        _autoCheckTimer = [NSTimer scheduledTimerWithTimeInterval:600 target:self selector:@selector(autoCheck) userInfo:nil repeats:YES];
-        _updateBtn.enabled = NO;
-    }else if (btn.state == 0){
-        _shouldAutoCheck = NO;
-        [_autoCheckTimer invalidate];
-        _updateBtn.enabled = YES;
-    }
-}
--(IBAction)onCheckBtn:(NSButton *)sender {
+//-(void)checkHost{
+//    NSString *hostname = _domainTFC.title;
+//    _checkHostIP = [_chinazEngine checkHostIPWithHostname:hostname onCompletion:^(NSDictionary *responseInfo) {
+//        NSString *message = [responseInfo objectForKey:@"message"];
+//        NSString *hostIP = [responseInfo objectForKey:@"hostIP"];
+//        if ([hostIP length] > 0) {
+//            if (![_hostIP isEqualToString:hostIP]) {
+//                NSLog(@"Host : %@ IP changed to %@",hostname,hostIP);
+//                _hostIP = hostIP;
+//                [self compareIPLocalToDomain];
+//            }else{
+//                NSLog(@"Host IP did not change.");
+//            }
+//        }else{
+//            _hostIP = hostIP;
+//            [self compareIPLocalToDomain];
+//        }
+//        NSLog(@"%@",message);
+//
+//        [_activityIndicator stopAnimation:nil];
+//    } onError:^(NSError *error) {
+//        NSLog(@"Check IP For HOST : %@ Request Failed With Error : %@",hostname,error);
+//        [_activityIndicator stopAnimation:nil];
+//    }];
+//
+//    [_activityIndicator startAnimation:nil];
+//}
+-(void)autoCheck{
     [self checkLocal];
+//    [self checkHost];
+    [self checkHostBySimplePing];
 }
--(IBAction)onUpdateBtn:(id)sender {
-    NSString *domain = _domainTFC.title;
-    [self updateOrayWithIp:_localIP andHostnames:@[domain]];
+-(void)compareIPLocalToDomain{
+    NSLog(@"LOCAL IP:%@ | HOST IP:%@",_localIP,_hostIP);
+    if (![_localIP isEqualToString:_hostIP]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (_shouldAutoCheck) {
+                [self onUpdateBtn:_autoCheckTimer];
+                NSLog(@"AUTO UPDATE!");
+            }
+        });
+    }
 }
 -(void)updateOrayWithIp:(NSString *)ip andHostnames:(NSArray *)hostnames{
     NSDictionary *authorInfo = @{@"username": _usernameTFC.title,@"password": _passwordSTFC.title};
@@ -157,53 +170,54 @@
     [_activityIndicator startAnimation:nil];
 }
 
+
+
+
+
+#pragma mark - Application Life Cycle
 -(void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
     self.orayEngine = [[OrayDDNSEngine alloc]initWithDefaultSettings];
     [self.orayEngine useCache];
-    self.chinazEngine = [[IPChinaZEngine alloc]initWithDefaultSettings];
-    [self.chinazEngine useCache];
+//    self.chinazEngine = [[IPChinaZEngine alloc]initWithDefaultSettings];
+//    [self.chinazEngine useCache];
     
     _shouldAutoCheck = NO;
 }
 
 
 
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////
-- (IBAction)onPingBtn:(id)sender {
-    [self pingHost];
-}
-
--(void)pingHost{
-    NSString *hostname = _domainTFC.title;
-    _ping = [SimplePing simplePingWithHostName:hostname];
-    _ping.delegate = self;
-    [_ping start];
-}
+#pragma mark - SimplePing Delegate methods
 -(void)simplePing:(SimplePing *)pinger didStartWithAddress:(NSData *)address{
-    
     [_ping stop];
+    
+    NSString *hostname = _domainTFC.title;
+    NSString *hostIP = [_ping getIPFromData:address];
+    if ([hostIP length] > 0) {
+        if (![_hostIP isEqualToString:hostIP]) {
+            NSLog(@"Host : %@ IP changed to %@",hostname,hostIP);
+            _hostIP = hostIP;
+            [self compareIPLocalToDomain];
+        }else{
+            NSLog(@"Host IP did not change.%@",hostIP);
+        }
+    }else{
+        _hostIP = hostIP;
+        [self compareIPLocalToDomain];
+    }
+    [_activityIndicator stopAnimation:nil];
 }
 -(void)simplePing:(SimplePing *)pinger didFailWithError:(NSError *)error{
-    
     [_ping stop];
-}
--(void)simplePing:(SimplePing *)pinger didSendPacket:(NSData *)packet{
     
+    NSString *hostname = _domainTFC.title;
+    NSLog(@"Check IP For HOST : %@ Failed With Error : %@",hostname,error);
+    [_activityIndicator stopAnimation:nil];
 }
--(void)simplePing:(SimplePing *)pinger didReceivePingResponsePacket:(NSData *)packet{
-    
-}
--(void)simplePing:(SimplePing *)pinger didReceiveUnexpectedPacket:(NSData *)packet{
-    
-}
--(void)simplePing:(SimplePing *)pinger didFailToSendPacket:(NSData *)packet error:(NSError *)error{
-    
+///////////////////////////////////////////////////////////
+- (IBAction)onPingBtn:(id)sender {
+    [self checkHostBySimplePing];
 }
 
 @end

@@ -75,7 +75,7 @@
  //////////////////////////////////////////////////////////////////////////////////////////////////////
          NSDictionary *responseInfo;
          NSString *response = [completedOperation responseString];
-         NSString *message;
+         NSString *message = @"";
          NSString *toIP = @"";
          if ([response rangeOfString:@"good"].length > 0) {
              toIP = [response componentsSeparatedByString:@" "][1];

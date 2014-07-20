@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8BAEF1AA197B5E4600DB261E /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BAEF1A9197B5E4600DB261E /* SimplePing.m */; };
 		BEE07EDA191733D8007764D4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEE07ED9191733D8007764D4 /* Foundation.framework */; };
 		BEE07EDC191733D8007764D4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEE07EDB191733D8007764D4 /* CoreGraphics.framework */; };
 		BEE07EDE191733D8007764D4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEE07EDD191733D8007764D4 /* UIKit.framework */; };
@@ -48,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8BAEF1A8197B5E4600DB261E /* SimplePing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePing.h; sourceTree = "<group>"; };
+		8BAEF1A9197B5E4600DB261E /* SimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePing.m; sourceTree = "<group>"; };
 		BEE07ED6191733D8007764D4 /* ddnsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ddnsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEE07ED9191733D8007764D4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BEE07EDB191733D8007764D4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -125,6 +128,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8BAEF1A7197B5E3200DB261E /* SimplePing */ = {
+			isa = PBXGroup;
+			children = (
+				8BAEF1A8197B5E4600DB261E /* SimplePing.h */,
+				8BAEF1A9197B5E4600DB261E /* SimplePing.m */,
+			);
+			name = SimplePing;
+			sourceTree = "<group>";
+		};
 		BEE07ECD191733D8007764D4 = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +219,7 @@
 		BEE07F0E191733F1007764D4 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				8BAEF1A7197B5E3200DB261E /* SimplePing */,
 				BEE07F0F191733FB007764D4 /* ASIHTTP */,
 			);
 			name = libs;
@@ -244,9 +257,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BEE07ED5191733D8007764D4 /* ddnsDemo */ = {
+		BEE07ED5191733D8007764D4 /* SimpleDDNS_iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BEE07F08191733D9007764D4 /* Build configuration list for PBXNativeTarget "ddnsDemo" */;
+			buildConfigurationList = BEE07F08191733D9007764D4 /* Build configuration list for PBXNativeTarget "SimpleDDNS_iOS" */;
 			buildPhases = (
 				BEE07ED2191733D8007764D4 /* Sources */,
 				BEE07ED3191733D8007764D4 /* Frameworks */,
@@ -256,7 +269,7 @@
 			);
 			dependencies = (
 			);
-			name = ddnsDemo;
+			name = SimpleDDNS_iOS;
 			productName = ddnsDemo;
 			productReference = BEE07ED6191733D8007764D4 /* ddnsDemo.app */;
 			productType = "com.apple.product-type.application";
@@ -307,7 +320,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BEE07ED5191733D8007764D4 /* ddnsDemo */,
+				BEE07ED5191733D8007764D4 /* SimpleDDNS_iOS */,
 				BEE07EF6191733D9007764D4 /* ddnsDemoTests */,
 			);
 		};
@@ -349,6 +362,7 @@
 				BEE07EEA191733D8007764D4 /* MDAppDelegate.m in Sources */,
 				BEE07F2B19173431007764D4 /* ASINetworkQueue.m in Sources */,
 				BEE07F2619173431007764D4 /* ASIDataDecompressor.m in Sources */,
+				8BAEF1AA197B5E4600DB261E /* SimplePing.m in Sources */,
 				BEE07F2E19173443007764D4 /* Reachability.m in Sources */,
 				BEE07F2719173431007764D4 /* ASIDownloadCache.m in Sources */,
 			);
@@ -367,7 +381,7 @@
 /* Begin PBXTargetDependency section */
 		BEE07EFD191733D9007764D4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BEE07ED5191733D8007764D4 /* ddnsDemo */;
+			target = BEE07ED5191733D8007764D4 /* SimpleDDNS_iOS */;
 			targetProxy = BEE07EFC191733D9007764D4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -548,7 +562,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BEE07F08191733D9007764D4 /* Build configuration list for PBXNativeTarget "ddnsDemo" */ = {
+		BEE07F08191733D9007764D4 /* Build configuration list for PBXNativeTarget "SimpleDDNS_iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BEE07F09191733D9007764D4 /* Debug */,

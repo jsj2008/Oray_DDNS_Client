@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8BAEF1AB197BC3D700DB261E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEE0802E1917A1B6007764D4 /* MainMenu.xib */; };
 		BE0D2A4D19188E9E00ACAC0A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0D2A4C19188E9E00ACAC0A /* CFNetwork.framework */; };
 		BE0D2A4F19188EA500ACAC0A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0D2A4E19188EA500ACAC0A /* Security.framework */; };
 		BE0D2A5119188EB900ACAC0A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0D2A5019188EB900ACAC0A /* SystemConfiguration.framework */; };
@@ -20,14 +21,12 @@
 		BE0D2A7419188F4F00ACAC0A /* MKNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0D2A6819188F4F00ACAC0A /* MKNetworkOperation.m */; };
 		BE0D2A7519188F4F00ACAC0A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0D2A6B19188F4F00ACAC0A /* Reachability.m */; };
 		BE0D2A78191896F600ACAC0A /* OrayDDNSEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0D2A77191896F600ACAC0A /* OrayDDNSEngine.m */; };
-		BE94CDD8191A1D9C0016DE19 /* IPChinaZEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = BE94CDD7191A1D9C0016DE19 /* IPChinaZEngine.m */; };
 		BE94CDDB191A34DC0016DE19 /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = BE94CDDA191A34DC0016DE19 /* SimplePing.m */; };
 		BEE0801A1917A1B6007764D4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEE080191917A1B6007764D4 /* Cocoa.framework */; };
 		BEE080241917A1B6007764D4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEE080221917A1B6007764D4 /* InfoPlist.strings */; };
 		BEE080261917A1B6007764D4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE080251917A1B6007764D4 /* main.m */; };
 		BEE0802A1917A1B6007764D4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = BEE080281917A1B6007764D4 /* Credits.rtf */; };
 		BEE0802D1917A1B6007764D4 /* MDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE0802C1917A1B6007764D4 /* MDAppDelegate.m */; };
-		BEE080301917A1B6007764D4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEE0802E1917A1B6007764D4 /* MainMenu.xib */; };
 		BEE080321917A1B6007764D4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEE080311917A1B6007764D4 /* Images.xcassets */; };
 		BEE080391917A1B6007764D4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEE080381917A1B6007764D4 /* XCTest.framework */; };
 		BEE0803A1917A1B6007764D4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEE080191917A1B6007764D4 /* Cocoa.framework */; };
@@ -271,9 +270,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BEE080151917A1B6007764D4 /* ddnsDemo_OSX */ = {
+		BEE080151917A1B6007764D4 /* SimpleDDNS_OSX */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BEE080471917A1B6007764D4 /* Build configuration list for PBXNativeTarget "ddnsDemo_OSX" */;
+			buildConfigurationList = BEE080471917A1B6007764D4 /* Build configuration list for PBXNativeTarget "SimpleDDNS_OSX" */;
 			buildPhases = (
 				BEE080121917A1B6007764D4 /* Sources */,
 				BEE080131917A1B6007764D4 /* Frameworks */,
@@ -283,7 +282,7 @@
 			);
 			dependencies = (
 			);
-			name = ddnsDemo_OSX;
+			name = SimpleDDNS_OSX;
 			productName = ddnsDemo_OSX;
 			productReference = BEE080161917A1B6007764D4 /* ddnsDemo_OSX.app */;
 			productType = "com.apple.product-type.application";
@@ -334,7 +333,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BEE080151917A1B6007764D4 /* ddnsDemo_OSX */,
+				BEE080151917A1B6007764D4 /* SimpleDDNS_OSX */,
 				BEE080361917A1B6007764D4 /* ddnsDemo_OSXTests */,
 			);
 		};
@@ -348,7 +347,7 @@
 				BEE080241917A1B6007764D4 /* InfoPlist.strings in Resources */,
 				BEE080321917A1B6007764D4 /* Images.xcassets in Resources */,
 				BEE0802A1917A1B6007764D4 /* Credits.rtf in Resources */,
-				BEE080301917A1B6007764D4 /* MainMenu.xib in Resources */,
+				8BAEF1AB197BC3D700DB261E /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,7 +373,6 @@
 				BEE080261917A1B6007764D4 /* main.m in Sources */,
 				BE0D2A7419188F4F00ACAC0A /* MKNetworkOperation.m in Sources */,
 				BE0D2A7319188F4F00ACAC0A /* MKNetworkEngine.m in Sources */,
-				BE94CDD8191A1D9C0016DE19 /* IPChinaZEngine.m in Sources */,
 				BEE0802D1917A1B6007764D4 /* MDAppDelegate.m in Sources */,
 				BE0D2A6E19188F4F00ACAC0A /* NSDate+RFC1123.m in Sources */,
 				BE94CDDB191A34DC0016DE19 /* SimplePing.m in Sources */,
@@ -396,7 +394,7 @@
 /* Begin PBXTargetDependency section */
 		BEE0803C1917A1B6007764D4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BEE080151917A1B6007764D4 /* ddnsDemo_OSX */;
+			target = BEE080151917A1B6007764D4 /* SimpleDDNS_OSX */;
 			targetProxy = BEE0803B1917A1B6007764D4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -585,7 +583,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BEE080471917A1B6007764D4 /* Build configuration list for PBXNativeTarget "ddnsDemo_OSX" */ = {
+		BEE080471917A1B6007764D4 /* Build configuration list for PBXNativeTarget "SimpleDDNS_OSX" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BEE080481917A1B6007764D4 /* Debug */,

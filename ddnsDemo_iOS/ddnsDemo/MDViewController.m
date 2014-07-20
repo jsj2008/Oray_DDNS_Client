@@ -8,8 +8,9 @@
 
 #import "MDViewController.h"
 #import "ASIHTTPRequest.h"
+#import "SimplePing.h"
 
-@interface MDViewController () //<UITextFieldDelegate>
+@interface MDViewController () <SimplePingDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *ipLabel;
 @property (strong,nonatomic) NSString *currentIp;
 @property (strong,nonatomic) NSString *lastIp;
@@ -22,84 +23,36 @@
 @property (weak, nonatomic) IBOutlet UISwitch *autoSwitch;
 @property (strong,nonatomic) NSTimer *autoCheckTimer;
 @property (weak, nonatomic) IBOutlet UIButton *checkHostBtn;
+@property (strong,nonatomic) SimplePing *ping;
 @end
 
 @implementation MDViewController
-- (IBAction)onCheckHostBtn:(id)sender {
-    NSString *urlStr = [NSString stringWithFormat:@"http://ip.chinaz.com/?IP=%@",_domainTextField.text];
-    NSURL *url = [NSURL URLWithString:urlStr];
-    __block ASIHTTPRequest *request = [[ASIHTTPRequest alloc]initWithURL:url];
-    [request setTimeOutSeconds:30];
-    [request setCompletionBlock:^{
-        if (request.responseStatusCode == 200) {
-            NSString *str = request.responseString;
-            NSRange headRange = [str rangeOfString:@"查询结果"];
-            NSRange tailRange = [str rangeOfString:@"==>>"];
-            
-            NSRange IPRange = NSMakeRange(headRange.location+headRange.length+5, tailRange.location-headRange.location-10);
-            NSString *hostIP = [str substringWithRange:IPRange];
-            NSArray *checkArr = [hostIP componentsSeparatedByString:@"."];
-            if ([checkArr count] == 4) {
-                BOOL validIP = YES;
-                for (NSString *part in checkArr) {
-                    if ([part integerValue] > 255) {
-                        validIP = NO;
-                    }
-                }
-                if (validIP) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [_checkHostBtn setTitle:hostIP forState:UIControlStateNormal];
-                        [_activityIndicator stopAnimating];
-                    });
-                }else{
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [_checkHostBtn setTitle:@"获取域名对应IP失败" forState:UIControlStateNormal];
-                        [_activityIndicator stopAnimating];
-                    });
-                }
-            }else{
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [_checkHostBtn setTitle:@"获取域名对应IP失败" forState:UIControlStateNormal];
-                    [_activityIndicator stopAnimating];
-                });
-            }
-        }else{
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [_checkHostBtn setTitle:@"获取域名对应IP失败" forState:UIControlStateNormal];
-                [_activityIndicator stopAnimating];
-            });
-        }
-    }];
-    [request setFailedBlock:^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            _ipLabel.text = @"Check Host Request Failed.";
-            [_activityIndicator stopAnimating];
-        });
-    }];
-    [request startAsynchronous];
-    [_activityIndicator startAnimating];
 
-}
+#pragma mark - Actions
 - (IBAction)handleAutoSwitch:(UISwitch *)sender {
     if (sender.isOn) {
-        _autoCheckTimer = [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(autoCheck) userInfo:nil repeats:YES];
+        _autoCheckTimer = [NSTimer scheduledTimerWithTimeInterval:600 target:self selector:@selector(autoCheck) userInfo:nil repeats:YES];
         _updateBtn.enabled = NO;
     }else{
         [_autoCheckTimer invalidate];
         _updateBtn.enabled = YES;
     }
 }
+
 - (IBAction)onCheckBtn:(id)sender {
     [self checkIp];
 }
+
 - (IBAction)onUpdateBtn:(id)sender {
     NSString *domain = _domainTextField.text;
     [self updateOrayWithIp:_currentIp andHostnames:@[domain]];
 }
+
+#pragma mark - Network Activities
 -(void)checkIp{
     NSString *checkUrlStr = @"http://ddns.oray.com/checkip";
     NSURL *checkUrl = [NSURL URLWithString:checkUrlStr];
-    __block ASIHTTPRequest *request = [[ASIHTTPRequest alloc]initWithURL:checkUrl];
+    __weak ASIHTTPRequest *request = [[ASIHTTPRequest alloc]initWithURL:checkUrl];
     [request setTimeOutSeconds:30];
     [request setCompletionBlock:^{
         if (request.responseStatusCode == 200) {
@@ -133,11 +86,78 @@
     [request startAsynchronous];
     [_activityIndicator startAnimating];
 }
+-(void)pingHost{
+    NSString *hostname = _domainTextField.text;
+    _ping = [SimplePing simplePingWithHostName:hostname];
+    _ping.delegate = self;
+    [_ping start];
+    [_activityIndicator startAnimating];
+}
+//-(void)checkHost{
+//    NSString *urlStr = [NSString stringWithFormat:@"http://ip.chinaz.com/?IP=%@",_domainTextField.text];
+//    NSURL *url = [NSURL URLWithString:urlStr];
+//    __block ASIHTTPRequest *request = [[ASIHTTPRequest alloc]initWithURL:url];
+//    [request setTimeOutSeconds:30];
+//    [request setCompletionBlock:^{
+//        if (request.responseStatusCode == 200) {
+//            NSString *str = request.responseString;
+//            NSRange headRange = [str rangeOfString:@"查询结果"];
+//            NSRange tailRange = [str rangeOfString:@"==>>"];
+//
+//            NSRange IPRange = NSMakeRange(headRange.location+headRange.length+5, tailRange.location-headRange.location-10);
+//            NSString *hostIP = [str substringWithRange:IPRange];
+//            NSArray *checkArr = [hostIP componentsSeparatedByString:@"."];
+//            if ([checkArr count] == 4) {
+//                BOOL validIP = YES;
+//                for (NSString *part in checkArr) {
+//                    if ([part integerValue] > 255) {
+//                        validIP = NO;
+//                    }
+//                }
+//                if (validIP) {
+//                    dispatch_async(dispatch_get_main_queue(), ^{
+//                        [_checkHostBtn setTitle:hostIP forState:UIControlStateNormal];
+//                        [_activityIndicator stopAnimating];
+//                    });
+//                }else{
+//                    dispatch_async(dispatch_get_main_queue(), ^{
+//                        [_checkHostBtn setTitle:@"获取域名对应IP失败" forState:UIControlStateNormal];
+//                        [_activityIndicator stopAnimating];
+//                    });
+//                }
+//            }else{
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    [_checkHostBtn setTitle:@"获取域名对应IP失败" forState:UIControlStateNormal];
+//                    [_activityIndicator stopAnimating];
+//                });
+//            }
+//        }else{
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [_checkHostBtn setTitle:@"获取域名对应IP失败" forState:UIControlStateNormal];
+//                [_activityIndicator stopAnimating];
+//            });
+//        }
+//    }];
+//    [request setFailedBlock:^{
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            _ipLabel.text = @"Check Host Request Failed.";
+//            [_activityIndicator stopAnimating];
+//        });
+//    }];
+//    [request startAsynchronous];
+//    [_activityIndicator startAnimating];
+//}
 -(void)autoCheck{
+    [self checkIp];
+    [self pingHost];
+}
+-(void)compareIPLocalToDomain{
     NSLog(@"currentIP:%@\nlastIP:%@",_currentIp,_lastIp);
     if (![_currentIp isEqualToString:_lastIp]) {
-        [self onUpdateBtn:_autoCheckTimer];
-        NSLog(@"AUTO UPDATE!");
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self onUpdateBtn:_autoCheckTimer];
+            NSLog(@"AUTO UPDATE!");
+        });
     }
 }
 -(void)updateOrayWithIp:(NSString *)ip andHostnames:(NSArray *)hostnames{
@@ -153,7 +173,7 @@
     
     NSString *updateUrlStr = [NSString stringWithFormat:@"http://ddns.oray.com/ph/update?hostname=%@&myip=%@",hostnames[0],ip];
     NSURL *updateUrl = [NSURL URLWithString:updateUrlStr];
-    __block ASIHTTPRequest *request = [[ASIHTTPRequest alloc]initWithURL:updateUrl];
+    __weak ASIHTTPRequest *request = [[ASIHTTPRequest alloc]initWithURL:updateUrl];
     [request setUsername:_usernameTextField.text];
     [request setPassword:_passwordTextField.text];
     [request setTimeOutSeconds:30];
@@ -227,6 +247,7 @@
     });
 }
 
+#pragma mark - View Controller Life Cycle
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -235,11 +256,49 @@
     [self.view addGestureRecognizer:tapOnView];
     
 }
-
 -(void)handleTapOnView:(id)sender{
     [_usernameTextField resignFirstResponder];
     [_passwordTextField resignFirstResponder];
     [_domainTextField resignFirstResponder];
+}
+
+
+
+
+#pragma mark - SimplePing Delegate methods
+-(void)simplePing:(SimplePing *)pinger didStartWithAddress:(NSData *)address{
+    [_ping stop];
+
+    NSString *hostname = _domainTextField.text;
+    NSString *hostIP = [_ping getIPFromData:address];
+    if ([hostIP length] > 0) {
+        if (![_currentIp isEqualToString:hostIP]) {
+            NSLog(@"Host : %@ IP changed to %@",hostname,hostIP);
+            _currentIp = hostIP;
+            [self compareIPLocalToDomain];
+        }else{
+            NSLog(@"Host IP did not change.%@",hostIP);
+        }
+    }else{
+        _currentIp = hostIP;
+        [self compareIPLocalToDomain];
+    }
+    [_checkHostBtn setTitle:hostIP forState:UIControlStateNormal];
+    [_activityIndicator stopAnimating];
+}
+
+-(void)simplePing:(SimplePing *)pinger didFailWithError:(NSError *)error{
+    [_ping stop];
+    
+    NSString *hostname = _domainTextField.text;
+    NSLog(@"Check IP For HOST : %@ Failed With Error : %@",hostname,error);
+    [_activityIndicator stopAnimating];
+}
+
+///////////////////////////////////////////////////////////
+- (IBAction)onCheckHostBtn:(id)sender {
+    //    [self checkHost];
+    [self pingHost];
 }
 
 @end
